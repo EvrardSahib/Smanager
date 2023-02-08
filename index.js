@@ -1,16 +1,8 @@
-var mysql = require('mysql');
+const express = require('express');
+require('dotenv').config({ path: './config/.env' })
+require('./config/db')
+const app = express();
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Chesstitan87"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  con.query("CREATE DATABASE smanager2", function (err, result) {
-    if (err) throw err;
-    console.log("Database created");
-  });
-});
+app.listen(process.env.PORT, () => {
+    console.log('Listening on port 5500');
+})
